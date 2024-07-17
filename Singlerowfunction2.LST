@@ -1,0 +1,145 @@
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE SUBSTR(JOB,-3)='MAN';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                                                                                                                       
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                                                                                                                       
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                                                                                                                       
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                                                                                                                       
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                                                                                                                                                                       
+
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE SUBSTR(JOB,1,3)='MAN';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                                                                                                                       
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                                                                                                                       
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                                                                                                                       
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                                                                                                                       
+
+SQL> SELECT INSTR('QSPIDERS','S',1)
+  2  FROM DUAL;
+
+INSTR('QSPIDERS','S',1)                                                                                                                                                                                                                                                                                     
+-----------------------                                                                                                                                                                                                                                                                                     
+                      2                                                                                                                                                                                                                                                                                     
+
+ 
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE INSTR(ENAME,'L',1);
+WHERE INSTR(ENAME,'L',1)
+                       *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+                                                                                                                                                                                                                                                                                                 
+
+  1  SELECT ENAME
+  2  FROM EMP
+  3* WHERE INSTR(ENAME,'L',1)>0 AND INSTR(ENAME,'L',1,2)=0
+SQL> /
+
+ENAME                                                                                                                                                                                                                                                                                                       
+----------                                                                                                                                                                                                                                                                                                  
+BLAKE                                                                                                                                                                                                                                                                                                       
+CLARK                                                                                                                                                                                                                                                                                                       
+
+
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE INSTR(DNAME,'O',1)>0;
+
+DNAME                                                                                                                                                                                                                                                                                                       
+--------------                                                                                                                                                                                                                                                                                              
+ACCOUNTING                                                                                                                                                                                                                                                                                                  
+OPERATIONS                                                                                                                                                                                                                                                                                                  
+
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE INSTR(JOB,'MAN')>0;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                                                                                                                       
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                                                                                                                       
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                                                                                                                       
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                                                                                                                       
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                                                                                                                       
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                                                                                                                       
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                                                                                                                       
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                                                                                                                                                                       
+
+7 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT *
+  2  FROM EMP
+  3* WHERE SUBSTR(JOB,1,3)='MAN'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                                                                                                                       
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                                                                                                                       
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                                                                                                                       
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                                                                                                                       
+
+
+
+  1  SELECT CONCAT(CONCAT(CONCAT(CONCAT(ENAME,' is a '),JOB),' and gets salary '),SAL)
+  2* FROM EMP
+SQL> /
+
+CONCAT(CONCAT(CONCAT(CONCAT(ENAME,'ISA'),JOB),'ANDGETSSALARY'),SAL)                                                                                                                                                                                                                                         
+----------------------------------------------------------------------------------                                                                                                                                                                                                                          
+SMITH is a CLERK and gets salary 800                                                                                                                                                                                                                                                                        
+ALLEN is a SALESMAN and gets salary 1600                                                                                                                                                                                                                                                                    
+WARD is a SALESMAN and gets salary 1250                                                                                                                                                                                                                                                                     
+JONES is a MANAGER and gets salary 2975                                                                                                                                                                                                                                                                     
+MARTIN is a SALESMAN and gets salary 1250                                                                                                                                                                                                                                                                   
+BLAKE is a MANAGER and gets salary 2850                                                                                                                                                                                                                                                                     
+CLARK is a MANAGER and gets salary 2450                                                                                                                                                                                                                                                                     
+SCOTT is a ANALYST and gets salary 3000                                                                                                                                                                                                                                                                     
+KING is a PRESIDENT and gets salary 5000                                                                                                                                                                                                                                                                    
+TURNER is a SALESMAN and gets salary 1500                                                                                                                                                                                                                                                                   
+ADAMS is a CLERK and gets salary 1100                                                                                                                                                                                                                                                                       
+JAMES is a CLERK and gets salary 950                                                                                                                                                                                                                                                                        
+FORD is a ANALYST and gets salary 3000                                                                                                                                                                                                                                                                      
+MILLER is a CLERK and gets salary 1300                                                                                                                                                                                                                                                                      
+
+14 rows selected.
+
+
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE TO_CHAR(HIREDATE,'DAY')='WEDNESDAY';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                                                                                                                       
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                                                                                                                       
+
+
+  1  SELECT *
+  2  FROM EMP
+  3  WHERE MOD(TO_NUMBER(TO_CHAR(HIREDATE,'YYYY')),4)=0
+  4* AND (MOD(TO_NUMBER(TO_CHAR(HIREDATE,'YYYY')),100) !=0 OR MOD(TO_NUMBER(TO_CHAR(HIREDATE,'YYYY')),400)=0)
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                                                                                                                       
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                                                                                                                       
+
+
+
+  1  SELECT *
+  2  FROM EMP
+  3* WHERE TO_CHAR(HIREDATE,'D')=1 AND TO_CHAR(HIREDATE,'MM')=5
+  4  /
+
+no rows selected
+
+SQL> SPOOL OFF;
