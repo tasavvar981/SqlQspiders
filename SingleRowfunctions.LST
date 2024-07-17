@@ -1,0 +1,64 @@
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE LENGTH(ENAME)=4;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                                                                                                                       
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                                                                                                                       
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                                                                                                                       
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                                                                                                                       
+
+SQL> SELECT * FROM EMP
+  2  WHERE LENGTH(JOB)=7;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                                                                                                                       
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                                                                                                                       
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                                                                                                                       
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                                                                                                                       
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                                                                                                                       
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                                                                                                                       
+
+SQL>  SELECT LENGTH('QSPIDERS')-LENGTH(REPLACE('QSPIDERS','S'))
+  2   FROM DUAL;
+
+LENGTH('QSPIDERS')-LENGTH(REPLACE('QSPIDERS','S'))                                                                                                                                                                                                                                                          
+--------------------------------------------------                                                                                                                                                                                                                                                          
+                                                 2                                                                                                                                                                                                                                                          
+
+SQL> SELECT LENGTH(ENAME)-LENGTH(REPLACE(ENAME,'L'))
+  2  FROM EMP;
+
+LENGTH(ENAME)-LENGTH(REPLACE(ENAME,'L'))                                                                                                                                                                                                                                                                    
+----------------------------------------                                                                                                                                                                                                                                                                    
+                                       0                                                                                                                                                                                                                                                                    
+                                       2                                                                                                                                                                                                                                                                    
+                                       0                                                                                                                                                                                                                                                                    
+                                       0                                                                                                                                                                                                                                                                    
+                                       0                                                                                                                                                                                                                                                                    
+                                       1                                                                                                                                                                                                                                                                    
+                                       1                                                                                                                                                                                                                                                                    
+                                       0                                                                                                                                                                                                                                                                    
+                                       0                                                                                                                                                                                                                                                                    
+                                       0                                                                                                                                                                                                                                                                    
+                                       0                                                                                                                                                                                                                                                                    
+                                       0                                                                                                                                                                                                                                                                    
+                                       0                                                                                                                                                                                                                                                                    
+                                       2                                                                                                                                                                                                                                                                    
+
+14 rows selected.
+
+SQL> SELECT LENGTH('HELLLLL')-LENGTH(REPLACE('HELLLLL','L'))
+  2  FROM DUAL;
+
+LENGTH('HELLLLL')-LENGTH(REPLACE('HELLLLL','L'))                                                                                                                                                                                                                                                            
+------------------------------------------------                                                                                                                                                                                                                                                            
+                                               5                                                                                                                                                                                                                                                            
+
+SQL> SELECT CONCAT(LOWER(SUBSTR('QSPIDERS',1,3)),UPPER(SUBSTR('QSPIDERS',4,LENGTH('QSPIDERS')-3))) FROM DUAL;
+
+CONCAT(L                                                                                                                                                                                                                                                                                                    
+--------                                                                                                                                                                                                                                                                                                    
+qspIDERS                                                                                                                                                                                                                                                                                                    
+
+SQL> SPOOL OFF;
