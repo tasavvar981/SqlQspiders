@@ -1,0 +1,68 @@
+1  CREATE TABLE CUSTOMER
+  2  (
+  3  CustomerID INT PRIMARY KEY,
+  4  FirstName VARCHAR(50) NOT NULL,
+  5  LastName VARCHAR(50) NOT NULL,
+  6  Email VARCHAR(100) UNIQUE,
+  7  Phone NUMBER(10) CHECK (Phone > 0) CHECK(Length(Phone) = 10),
+  8* Address VARCHAR(255))
+SQL> /
+
+Table created.
+
+SQL> CREATE TABLE TEACHER
+ (
+ TID NUMBER(5) PRIMARY KEY
+ CHECK (TID>0) CHECK(LENGTH(TID)=5),
+ TNAME VARCHAR(20) NOT NULL,
+ AGE NUMBER(2) CHECK(AGE>0),
+ EMAIL VARCHAR(20) UNIQUE,
+ SID NUMBER(5),
+ CONSTRAINT FK_SID FOREIGN KEY(SID)
+ REFERENCES STUDENT(SID)
+ )
+ ;
+
+Table created.
+
+
+SQL> CREATE TABLE PRODUCT (
+  2  ProductID NUMBER(5) PRIMARY KEY,
+  3  ProductName VARCHAR(100) NOT NULL,
+  4  Category VARCHAR(50),
+  5  Price NUMBER(20) CHECK (Price > 0)
+  6  );
+
+Table created.
+
+
+
+SQL> CREATE TABLE FARMER (
+  2   FarmerID NUMBER(5) PRIMARY KEY,
+  3   FarmerName VARCHAR(20) NOT NULL,
+  4   Email VARCHAR(100) UNIQUE,
+  5   Phone NUMBER(10) CHECK (Phone > 0 AND LENGTH(Phone) = 10),
+  6   Address VARCHAR(255),
+  7   ProductID NUMBER(5),
+  8   CONSTRAINT FK_ProductID FOREIGN KEY (ProductID)
+  9   REFERENCES PRODUCT (ProductID)
+ 10  );
+
+Table created.
+
+
+  1  CREATE TABLE MEDICINE (
+  2      MedicineID NUMBER(5) PRIMARY KEY,
+  3      MedicineName VARCHAR(20) NOT NULL,
+  4      Brand VARCHAR(20) NOT NULL,
+  5      Price NUMBER(30) CHECK (Price > 0),
+  6      FarmerID NUMBER(5),
+  7      CONSTRAINT FK_FarmerID FOREIGN KEY (FarmerID)
+  8      REFERENCES SUPPLIER (FarmerID)
+  9* )
+SQL> 
+
+Table created.
+
+
+SQL> SPOOL OFF;
