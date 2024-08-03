@@ -1,4 +1,5 @@
-1  CREATE TABLE CUSTOMER
+SQL> spool off;
+USTOMER
   2  (
   3  CustomerID INT PRIMARY KEY,
   4  FirstName VARCHAR(50) NOT NULL,
